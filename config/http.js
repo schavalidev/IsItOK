@@ -9,6 +9,31 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
 
+/*var Auth0Strategy = require('passport-auth0');
+
+var strategy = new Auth0Strategy({
+    domain:       'isitok.auth0.com',
+    clientID:     'vAXGIMGvKBH0qh9Mkq7Msy81hqGBY1br',
+    clientSecret: 'ldVzFMBWnlyzSvhwXzLzX_t0qgEHJW5oD4B5S867HMmCnut4AM1-Bso9qBscyFb_',
+    callbackURL:  process.env.AUTH0_CALLBACK_URL || 'http://localhost:1337/'
+  }, function(accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  });
+
+require('passport').use(strategy);
+
+// This can be used to keep a smaller payload
+require('passport').serializeUser(function(user, done) {
+  done(null, user);
+});
+
+require('passport').deserializeUser(function(user, done) {
+  done(null, user);
+});*/
+
 module.exports.http = {
 
   /****************************************************************************
@@ -23,6 +48,9 @@ module.exports.http = {
 
   middleware: {
 
+    /*passportInit    : require('passport').initialize(),
+    passportSession : require('passport').session(),*/
+        
   /***************************************************************************
   *                                                                          *
   * The order in which middleware should be run for HTTP request. (the Sails *
@@ -30,10 +58,12 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    // order: [
+    //order: [
     //   'startRequestTimer',
     //   'cookieParser',
-    //   'session',
+    //  'session',
+    //  'passportInit',
+    //  'passportSession'
     //   'myRequestLogger',
     //   'bodyParser',
     //   'handleBodyParserError',
@@ -46,7 +76,7 @@ module.exports.http = {
     //   'favicon',
     //   '404',
     //   '500'
-    // ],
+    //],
 
   /****************************************************************************
   *                                                                           *

@@ -16,7 +16,6 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.policies.html
  */
 
-
 module.exports.policies = {
 
   /***************************************************************************
@@ -26,7 +25,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': [true, 'flash'],
 
   /***************************************************************************
   *                                                                          *
@@ -48,4 +47,8 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+  UserController: {
+    '*': ['flash']
+  }
 };
