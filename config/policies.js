@@ -17,6 +17,7 @@
  */
 
 module.exports.policies = {
+ 
 
   /***************************************************************************
   *                                                                          *
@@ -24,8 +25,6 @@ module.exports.policies = {
   * access)                                                                  *
   *                                                                          *
   ***************************************************************************/
-
-  '*': [true, 'flash'],
 
   /***************************************************************************
   *                                                                          *
@@ -49,6 +48,11 @@ module.exports.policies = {
 	// }
 
   UserController: {
-    '*': ['flash']
+    '*':[true, 'flash'],
+    'home': ['isAllowed', 'flash'],
+    'logout':['isAllowed', 'flash'],
+  },
+  FinAccountController: {
+    '*': ['isAllowed', 'flash']
   }
 };

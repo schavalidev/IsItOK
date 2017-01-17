@@ -1,4 +1,5 @@
-module.exports = function(req, res, next) {
+module.exports = function flash(req, res, next) {
+  console.log('In flash...');
   res.locals.messages = { success: [], error: [], warning: [] };
 
   if(!req.session.messages) {

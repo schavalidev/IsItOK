@@ -7,40 +7,37 @@
 
 module.exports = {
 	
+  home: function(req, res)
+  {
+    console.log('User in controller is...');
+    console.log(req.user);
+    res.view('homepage');
+    return;
+  },
+
+  register: function(req, res)
+  {
+    res.view('register');
+    return;
+  },
+
   login: function(req, res)
   {
-    return res.view('login');
-  },
-  /**
-   * `UserController.login()`
-   */
-  attemptLogin: function (req, res) {
-    return res.login({
-      email: req.param('email'),
-      password: req.param('password'),
-      successRedirect: '/',
-      invalidRedirect: '/login'
-    });
+    res.view('login');
+    return;
   },
 
   /**
    * `UserController.logout()`
    */
   logout: function (req, res) {
-    return res.json({
+    res.json({
       todo: 'logout() is not implemented yet!'
     });
+
+    return;
   },
 
-  home: function(req, res)
-  {
-    return res.view('homepage');
-  },
-
-  register: function(req, res)
-  {
-    return res.view('register');
-  },
   /**
    * `UserController.signup()`
    */

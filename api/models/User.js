@@ -10,12 +10,13 @@ module.exports = {
 
   attributes: {
 
-    first: 'STRING',
-    last: 'STRING',
-    email: 'STRING',
-    dob: 'Date',
-    dependents: 'INTEGER',
-    password: 'STRING'
+      first: 'string',
+      last: 'string',
+      email: 'string',
+      dob: 'Date',
+      dependents: 'integer',
+      password: 'string',
+      accounts: 'Array'
     },
     login : { type: 'string' },
 
@@ -24,7 +25,7 @@ module.exports = {
 
    beforeCreate:function(user, cb) {
      bcrypt.genSalt(10, function(err, salt) {
-       bcrypt.hash(this.password, salt, function(err, hash) {
+       bcrypt.hash(user.password, salt, function(err, hash) {
          if(err) {
            console.log(err);
            cb(err);
@@ -79,6 +80,55 @@ module.exports = {
       password: inputs.password
       })
     .exec(cb);
-  }
+  },
+
+  addAccount: function (account, cb) {
+    //Find the user
+    User.findOne(req.user, function(err, user){
+      if(err || !user) {
+        res.send({
+          info: err, 
+          message: 'User not found'});
+      }
+
+      console.log('found user in addaccount...'+ user.email);
+      if (user.accounts.find(function(acc) {
+        if(acc.institution === account.institution) {
+          return true;
+      }
+      }) === undefined) {
+          push({institution: account.institution, accessToken: account.accessToken}); 
+      } else {
+        console.log('user already has account for the institution:' + institution);  
+      }
+      console.log('updated user is....' + JSON.stringify(user));
+      user.save(cb);
+    });
+  },
+
+  findAccount: function(options, cb) {
+    //Find the user
+      User.findOne({email: options.email}, function(err, user){
+      
+      if(err) {
+        cb({error: err}, null);
+      }
+
+      if(!user) {
+        cb({err: 'User not found'}, null);
+      }
+
+      var account = {};
+      user.accounts.forEach(function(element) {
+        console.log('accounts forEach...' + JSON.stringify(element));
+        if(element.institution === options.institution) {
+          console.log('!!!!!!!!!!!!found a match');
+          account = element;
+        }
+      });
+
+      cb(null, account);
+      });
+    }
   };
 

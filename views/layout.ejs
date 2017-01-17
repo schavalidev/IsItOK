@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="IsItOK">
   <head>
+    <meta name="viewport" content="width=device-width initial-scale=1"/>
     <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
-
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -29,34 +29,17 @@
     -->
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/font-awesome.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills float-xs-right">
-            <li class="nav-item">
-              <a class="nav-link active" href="/homepage">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Is It OK?</h3>
-      </div>
-
       <div class="row">
         <div class="col-lg-12">
-        <% if (messages && (typeof messages !== undefined) && messages['error'].length > 0) { %>
+        <% if ((typeof messages != undefined) && messages && messages['error'].length > 0) { %>
           <div class="alert alert-danger">
           <% messages['error'].forEach(function(message) { %>
             <%= message %>
@@ -65,7 +48,7 @@
           </div>
           <br>
         <% } %>
-        <% if (messages && (typeof messages !== undefined) && messages['warning'].length > 0) { %>
+        <% if ((typeof messages != undefined) && messages && messages['warning'].length > 0) { %>
           <div class="alert alert-warning">
           <% messages['warning'].forEach(function(message) { %>
             <%= message %>
@@ -74,7 +57,7 @@
           </div>
           <br>
         <% } %>
-        <% if (messages && (typeof messages !== undefined) && messages['success'].length > 0) { %>
+        <% if ((typeof messages != undefined) && messages && messages['success'].length > 0) { %>
           <div class="alert alert-success">
           <% messages['success'].forEach(function(message) { %>
             <%= message %>
@@ -146,6 +129,7 @@
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/app.js"></script>
     <script src="/js/bootstrap.js"></script>
     <script src="/js/customValidate.js"></script>
     <!--SCRIPTS END-->

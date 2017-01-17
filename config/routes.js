@@ -31,26 +31,15 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-  '/': {
-    controller: 'User',
-    action: 'home'
-  },
-  '/homepage': {view: 'homepage'},
-  'get /register': { 
-    controller: 'User',
-    action: 'register'},
-  'get /signup' : {
-    controller: 'User',
-    action: 'signup' },
-  'get /login' : 
-  { controller: 'User',
-    action: 'login'
-  },
-  'post /login': {
-    controller: 'User',
-    action: 'attemptLogin'
-  }
-
+  '/': 'UserController.home',
+  'get /register': 'UserController.register',
+  'post /signup' : 'UserController.signup',
+  'get /login' : 'UserController.login',
+  'post /login': 'AuthController.login',
+  '/logout': 'AuthController.logout',
+  'post /addAccount': 'FinAccountController.addAccount',
+  'get /addAccount': 'FinAccountController.addAccountPage',
+  'get /getLastTransactions' : 'FinAccountController.getLastTransactions'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

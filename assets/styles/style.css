@@ -85,3 +85,21 @@ body {
 footer {
     margin-top:20px;
 }
+
+nav ul li {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 150%;
+  display: inline-block;
+}
+
+nav ul li a {
+  color: #F5F5F5;
+}
+
+nav ul li a:hover {
+  color: #C3D7DF;
+}
+
+.current {
+  color: #C3D7DF;
+}
