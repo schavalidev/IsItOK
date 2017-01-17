@@ -27,6 +27,16 @@ module.exports = {
     return;
   },
 
+  addAccount: function(req, res)
+  {
+    res.view('AddAccount');
+  },
+
+  getProfile: function(req, res)
+  {
+    res.view('user/profile');
+  },
+
   /**
    * `UserController.logout()`
    */

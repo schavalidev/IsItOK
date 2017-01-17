@@ -35,11 +35,12 @@ module.exports.routes = {
   'get /register': 'UserController.register',
   'post /signup' : 'UserController.signup',
   'get /login' : 'UserController.login',
+  'get /profile' : 'Usercontroller.getProfile',
   'post /login': 'AuthController.login',
   '/logout': 'AuthController.logout',
   'post /addAccount': 'FinAccountController.addAccount',
   'get /addAccount': 'FinAccountController.addAccountPage',
-  'get /getLastTransactions' : 'FinAccountController.getLastTransactions'
+  'get /getLastTransactions' : 'FinAccountController.getLastTransactions',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

@@ -19,6 +19,12 @@ module.exports = {
         console.log('In Auth login...');
         passport.authenticate('local', function(err, user, info) {
             if((err) || (!user)) {
+
+                if(!user) {
+                    FlashService.error(req, 'User not found, please register first!!');
+                    return res.redirect('/register');
+                }
+
                 return res.send({
                     message: err.message,
                     user: user
@@ -28,9 +34,7 @@ module.exports = {
             req.logIn(user, function(err) {
                 if(err) res.send(err);
 
-                return res.send({
-                    user: user 
-                });
+                return res.redirect('/profile');
             });            
         })(req, res);
     },

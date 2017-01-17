@@ -119,7 +119,8 @@ module.exports = {
       }
 
       var account = {};
-      user.accounts.forEach(function(element) {
+      if(user.accounts) {
+        user.accounts.forEach(function(element) {
         console.log('accounts forEach...' + JSON.stringify(element));
         if(element.institution === options.institution) {
           console.log('!!!!!!!!!!!!found a match');
@@ -127,6 +128,8 @@ module.exports = {
         }
       });
 
+      }
+      
       cb(null, account);
       });
     }
